@@ -93,7 +93,33 @@ function getPasswordOptions() {
 
 }
 
-// Function for getting a random element from an array
+//Password lenght
+
+let passwordLenght = prompt("Enter password length between 10 & 64 characters");
+if (passwordLenght < 10 || passwordLenght > 64 || isNaN(passwordLenght)) {
+  passwordLenght = prompt("Enter password length between 10 & 64 characters");
+  else {
+    passwordLenght = prompt("Password lenght must be between 10 & 64 characters");
+  }
+}
+
+//Uppercase
+
+let passwordUpperCase = confirm("Do you want Uppercase in your password?");
+
+
+//Uppercase
+
+let passwordLowerCase = confirm("Do you want Lowercase in your password?");
+
+//Numeric
+
+let passwordNumeric = confirm("Do you want to include numbers in your password?");
+
+//Special characters
+
+let passwordSpecialCharacters = confirm("Do you want to include special characters in your password?");
+
 function getRandom(arr) {
 
 }
