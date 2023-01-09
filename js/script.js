@@ -87,23 +87,44 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
+//Variable declaration
+
+let confirmLength = "";
+let confirmUpperCase;
+let confirmLoweCase;
+let confirmNumericCharacter;
+let confirmSpecialCharacter;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  //Password length prompt
 
-  let passwordLength = parseInt(prompt("Enter password length between 10 & 64 characters"));
-  if (passwordLength < 10 || passwordLength > 64 || isNaN(passwordLength)) {
-    alert("Password lenght must be between 10 & 64 characters");
-    return null;
+  //Password length prompt
+  let confirmLength = parseInt(prompt("Enter password length between 10 & 64 characters"));
+  //loop if answer is outside the range
+  if (confirmLength < 10 || confirmLength > 64 || isNaN(confirmLength)) {
+    alert("Password lenght must be between 10 & 64 characters. Try again!");
+    let confirmLength = parseInt(prompt("Enter password length between 10 & 64 characters"));
   }
 
-  console.log(passwordLength);
+  //Repeat back how many characters the user will have
+  alert(`Your password will have ${confirmLenght} characters`);
 
-  let passwordUpperCase = confirm("Do you want Uppercase in your password?");
-  let passwordLowerCase = confirm("Do you want Lowercase in your password?");
-  let passwordNumbers = confirm("Do you want Numbers in your password?");
-  let passwordSpecial = confirm("Do you want Special characters in your password?");
+  //console.log(confirmLength);
+
+  //Determine parameters of password
+  let confirmUpperCase = confirm("Do you want Uppercase in your password?");
+  let confirmLoweCase = confirm("Do you want Lowercase in your password?");
+  let confirmNumericCharacter = confirm("Do you want Numbers in your password?");
+  let confirmSpecialCharacter = confirm("Do you want Special characters in your password?");
+  //Loop if answer is outside parameters
+  while (passwordUpperCase === false && confirmLoweCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
+    alert("Please choose at least one option to continue");
+    let confirmUpperCase = confirm("Do you want Uppercase in your password?");
+    let confirmLoweCase = confirm("Do you want Lowercase in your password?");
+    let confirmNumericCharacter = confirm("Do you want Numbers in your password?");
+    let confirmSpecialCharacter = confirm("Do you want Special characters in your password?");
+
+  }
 
 }
 const passwordObject = {
