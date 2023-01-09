@@ -95,26 +95,6 @@ let confirmLoweCase;
 let confirmNumericCharacter;
 let confirmSpecialCharacter;
 
-// Function to prompt user for password options
-// function getPasswordOptions() {
-
-
-
-// }
-
-// console.log(getPasswordOptions());
-
-
-// //Generator functions
-
-// function getRandom() {
-
-
-
-// }
-
-
-
 // Function to generate password with user input
 function generatePassword() {
   var confirmLength = (prompt("Please enter a password length between 10 & 64 characters"));
@@ -142,34 +122,34 @@ function generatePassword() {
     var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
   }
 
-  // Assign an action to the password parameters NEED TO FIX THIS
+  // Assign an action to the password parameters
   var passwordCharacters = []
 
   if (confirmUpperCase) {
-    passwordCharacters = passwordCharacters.concat(upperCasedCharacters)
+    passwordCharacters = passwordCharacters.concat(upperCasedCharacters);
   }
 
   if (confirmLowerCase) {
-    passwordCharacters = passwordCharacters.concat(lowerCasedCharacters)
+    passwordCharacters = passwordCharacters.concat(lowerCasedCharacters);
   }
 
   if (confirmNumericCharacter) {
-    passwordCharacters = passwordCharacters.concat(numericCharacters)
+    passwordCharacters = passwordCharacters.concat(numericCharacters);
   }
 
   if (confirmSpecialCharacter) {
-    passwordCharacters = passwordCharacters.concat(specialCharacters)
+    passwordCharacters = passwordCharacters.concat(specialCharacters);
   }
 
 
-  console.log(passwordCharacters)
+  console.log(passwordCharacters);
 
   // Empty string to be filled based on for loop selecting random characters from the array
   var randomPassword = ""
 
   for (var i = 0; i < confirmLength; i++) {
     randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-    console.log(randomPassword)
+    console.log(randomPassword);
   }
   return randomPassword;
 }
