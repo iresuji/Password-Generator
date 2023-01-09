@@ -96,94 +96,83 @@ let confirmNumericCharacter;
 let confirmSpecialCharacter;
 
 // Function to prompt user for password options
-function getPasswordOptions() {
+// function getPasswordOptions() {
 
-  //Password length prompt
-  let confirmLength = parseInt(prompt("Enter password length between 10 & 64 characters"));
-  //loop if answer is outside the range
-  if (confirmLength < 10 || confirmLength > 64 || isNaN(confirmLength)) {
-    alert("Password lenght must be between 10 & 64 characters. Try again!");
-    let confirmLength = parseInt(prompt("Enter password length between 10 & 64 characters"));
-  }
 
-  //Repeat back how many characters the user will have
-  alert(`Your password will have ${confirmLenght} characters`);
 
-  //console.log(confirmLength);
+// }
 
-  //Determine parameters of password
-  let confirmUpperCase = confirm("Do you want Uppercase in your password?");
-  let confirmLoweCase = confirm("Do you want Lowercase in your password?");
-  let confirmNumericCharacter = confirm("Do you want Numbers in your password?");
-  let confirmSpecialCharacter = confirm("Do you want Special characters in your password?");
-  //Loop if answer is outside parameters
-  while (passwordUpperCase === false && confirmLoweCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
-    alert("Please choose at least one option to continue");
-    let confirmUpperCase = confirm("Do you want Uppercase in your password?");
-    let confirmLoweCase = confirm("Do you want Lowercase in your password?");
-    let confirmNumericCharacter = confirm("Do you want Numbers in your password?");
-    let confirmSpecialCharacter = confirm("Do you want Special characters in your password?");
+// console.log(getPasswordOptions());
 
-  }
 
-}
-const passwordObject = {
-  upper: getRandomUpper,
-  lower: getRandomLower,
-  number: getRandomNumeric,
-  special: getRandomSpecial,
-}
-//console.log(passwordObject);
+// //Generator functions
 
-//Generator functions
+// function getRandom() {
 
-function getRandomUpper() {
-  if (passwordUpperCase) {
-    upperCaseArray = characterArray.concat(upperCasedCharacters);
-    return upperCasedCharacters[Math.floor(Math.random() * upperCasedCharacters.length)];
-  }
-}
 
-console.log(getRandomUpper());
 
-function getRandomLower() {
-  return lowerCasedCharacters[Math.floor(Math.random() * lowerCasedCharacters.length)];
-}
+// }
 
-function getRandomNumeric() {
-  return numericCharacters[Math.floor(Math.random() * numericCharacters.length)];
-}
 
-function getRandomSpecial() {
-  return specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
-}
 
 // Function to generate password with user input
-function generatePassword(upper, lower, number, special, passwordLength) {
-  // Initialize password variables
+function generatePassword() {
+  var confirmLength = (prompt("Please enter a password length between 10 & 64 characters"));
 
-  //Filter out unchecked types
+  // Loop if answer is outside the parameters 
+  while (confirmLength <= 10 || confirmLength >= 64) {
+    alert("Password length must be between 10-64 characters Try again");
+    var confirmLength = (prompt("How many characters would you like your password to contain?"));
+  }
 
-  //Loop over length
+  // Repeat back how many charactes the user will have  
+  alert(`Your password will have ${confirmLength} characters`);
+
+  // Determine parameters of password 
+  var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+  var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
+  var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+  var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+  // Loop if answer is outside the parameters 
+  while (confirmUpperCase === false && confirmLowerCase === false && confirmSpecialCharacter === false && confirmNumericCharacter === false) {
+    alert("You must choose at least one parameter");
+    var confirmSpecialCharacter = confirm("Click OK to confirm if you would like to include special characters");
+    var confirmNumericCharacter = confirm("Click OK to confirm if you would like to include numeric characters");
+    var confirmLowerCase = confirm("Click OK to confirm if you would like to include lowercase characters");
+    var confirmUpperCase = confirm("Click OK to confirm if you would like to include uppercase characters");
+  }
+
+  // Assign an action to the password parameters NEED TO FIX THIS
+  var passwordCharacters = []
+
+  if (confirmUpperCase) {
+    passwordCharacters = passwordCharacters.concat(upperCasedCharacters)
+  }
+
+  if (confirmLowerCase) {
+    passwordCharacters = passwordCharacters.concat(lowerCasedCharacters)
+  }
+
+  if (confirmNumericCharacter) {
+    passwordCharacters = passwordCharacters.concat(numericCharacters)
+  }
+
+  if (confirmSpecialCharacter) {
+    passwordCharacters = passwordCharacters.concat(specialCharacters)
+  }
 
 
+  console.log(passwordCharacters)
 
+  // Empty string to be filled based on for loop selecting random characters from the array
+  var randomPassword = ""
 
-
-  let characterArray = [upper + lower + number + special];
-
-  let finalPassword = '';
-  let options = getPasswordOptions();
-  console.log(getPasswordOptions());
-  // if (options.passwordUpperCase) {
-  //   upperCaseArray = characterArray.concat(upperCasedCharacters);
-  // }
-  // //const length = passwordLength.value;
-  // //console.log(length);
+  for (var i = 0; i < confirmLength; i++) {
+    randomPassword = randomPassword + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    console.log(randomPassword)
+  }
+  return randomPassword;
 }
-
-// return finalPassword;
-//console.log(getRandom(options));
 
 
 // Get references to the #generate element
